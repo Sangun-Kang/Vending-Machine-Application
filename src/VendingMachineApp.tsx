@@ -5,9 +5,9 @@ export const VendingMachineApp = () => {
     <div className="App">
       <header className="App-header">
         <p>
-         Money Forward Test
+        Money Forward Test
         </p>
       </header>
     </div>
-  );
+  )
 }
