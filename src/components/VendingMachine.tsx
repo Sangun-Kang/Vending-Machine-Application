@@ -31,7 +31,7 @@ export const VendingMachine = () => {
       price: 580,
     },
   ]
-  const [orderHistory, setOrderHistory] = useState<ItemDetail[]>([])
+  const [orderhistory, setOrderHistory] = useState<ItemDetail[]>([])
 
   const addItemHandle = (item: ItemDetail) => {
     setOrderHistory((prevList) => [...prevList, item])
@@ -40,9 +40,9 @@ export const VendingMachine = () => {
   return (
     <div className="container">
       {itemList.map((item) => (
-        <ItemButton key={item.itemId} onClick={() => addItemHandle(item)} itemdetail={item} />
+        <ItemButton key={item.itemId} onClick={() => addItemHandle(item)} itemdetail={item} orderhistory={orderhistory} />
       ))}
-      <PaymentSummary orderHistory={orderHistory} />
+      <PaymentSummary orderhistory={orderhistory} />
     </div>
   )
 }

@@ -7,14 +7,21 @@ export interface ItemDetail {
 }
 
 // カスタムButton Componentの定義のため、Typeを宣言
-type ItemButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & { children?: ReactElement, itemdetail: ItemDetail }
+type ItemButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & { children?: ReactElement, itemdetail: ItemDetail, orderhistory: ItemDetail[] }
 
 export const ItemButton  = (props: ItemButtonProps) => {
+  const initialValue = 0
+  let count  = props.orderhistory.reduce(
+    (accumulator, currentValue) => accumulator + (props.itemdetail.itemId === currentValue.itemId ? 1 : 0), initialValue)
+  
   return (
     <div>
-      <button {...props} id={props.itemdetail.itemId}>
+      <button  className="item_button" {...props} id={props.itemdetail.itemId}>
         {props.itemdetail.itemId}, {props.itemdetail.price}
       </button>
+      <div id={props.itemdetail.itemId + "-count"} className="item_count">
+          {count}
+      </div>
     </div>
   )
 }
