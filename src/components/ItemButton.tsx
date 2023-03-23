@@ -24,7 +24,7 @@ export const ItemButton  = (props: ItemButtonProps) => {
     <div className="item_button_container">
       <button  className="item_button" onClick={props.onClick} id={props.itemdetail.itemId}>
         <span>{props.itemdetail.name}</span>
-        <span className="price">{props.itemdetail.price}円</span>
+        <span className="price">{props.itemdetail.price}</span>円
       </button>
       <div id={props.itemdetail.itemId + "-count"} className="item_count">
           {itemCount}

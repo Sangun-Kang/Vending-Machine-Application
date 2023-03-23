@@ -27,14 +27,14 @@ export const PaymentSummary = (props: PaymentSummaryItem) => {
       <div>
         <span>商品数: </span>
         <span id="count">
-          {totalCount}個
-        </span>
+          {totalCount}
+        </span>個
       </div>
       <div>
         <span>合計金額: </span>
         <span id="price">
-          {totalPrice}円
-        </span>
+          {totalPrice}
+        </span>円
       </div>
     </div>
   )
