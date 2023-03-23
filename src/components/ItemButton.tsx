@@ -7,13 +7,13 @@ export interface ItemDetail {
 }
 
 // カスタムButton Componentの定義のため、Typeを宣言
-type ItemButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & { children?: ReactElement, itemDetail: ItemDetail }
+type ItemButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & { children?: ReactElement, itemdetail: ItemDetail }
 
 export const ItemButton  = (props: ItemButtonProps) => {
   return (
     <div>
-      <button {...props} id={props.itemDetail.itemId}>
-        {props.itemDetail.itemId}, {props.itemDetail.price}
+      <button {...props} id={props.itemdetail.itemId}>
+        {props.itemdetail.itemId}, {props.itemdetail.price}
       </button>
     </div>
   )
