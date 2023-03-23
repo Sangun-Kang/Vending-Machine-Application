@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ItemButton, ItemDetail } from './ItemButton'
 import { PaymentSummary } from './PaymentSummary'
+
 
 export const VendingMachine = () => {
   const itemList: ItemDetail[] = [
@@ -30,26 +31,20 @@ export const VendingMachine = () => {
       price: 580,
     },
   ]
+  const [orderHistory, setOrderHistory] = useState<ItemDetail[]>([])
   const [totalCount, setTotalCount] = useState(0)
   const [totalPrice, setTotalPrice] = useState(0)
 
-
-  const addItemHandle = () => {
-    console.log("!!")
-    setTotalCount(totalCount+1)
-    calculationTotalPrice()
-    // Add Item Event
+  const addItemHandle = (item: ItemDetail) => {
+    setTotalCount((prevValue) => prevValue + 1)
+    setTotalPrice((prevValue) => prevValue + item.price)
+    setOrderHistory((prevList) => [...prevList, item])
   }
-
-  const calculationTotalPrice = () => {
-    console.log("??")
-    // Add Clculation Event
-  }  
 
   return (
     <div className="container">
       {itemList.map((item) => (
-        <ItemButton onClick={addItemHandle} itemDetail={item} />
+        <ItemButton onClick={() => addItemHandle(item)} itemDetail={item} />
       ))}
       <PaymentSummary totalItem={totalCount} totalPrice={totalPrice} />
     </div>
