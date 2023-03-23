@@ -1,14 +1,20 @@
-export interface ItemButtonDetail {
+import { ButtonHTMLAttributes, ReactElement } from "react"
+
+export interface ItemDetail {
   itemId: string
   name: string
   price: number
-
 }
 
-export const ItemButton = (props: ItemButtonDetail) => {
+// カスタムButton Componentの定義のため、Typeを宣言
+type ItemButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & { children?: ReactElement, itemDetail: ItemDetail }
+
+export const ItemButton  = (props: ItemButtonProps) => {
   return (
     <div>
-      <button id={props.itemId}>{props.name} {props.price}</button>
+      <button {...props} id={props.itemDetail.itemId}>
+        {props.itemDetail.itemId}, {props.itemDetail.price}
+      </button>
     </div>
   )
 }

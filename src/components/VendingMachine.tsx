@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { ItemButton, ItemButtonDetail } from './ItemButton'
+import { ItemButton, ItemDetail } from './ItemButton'
 import { PaymentSummary } from './PaymentSummary'
 
 export const VendingMachine = () => {
-  const itemList: ItemButtonDetail[] = [
+  const itemList: ItemDetail[] = [
     {
       itemId: 'coffee',
       name: 'コーヒ',
@@ -30,24 +30,28 @@ export const VendingMachine = () => {
       price: 580,
     },
   ]
-  const [count, setCount] = useState(0)
+  const [totalCount, setTotalCount] = useState(0)
   const [totalPrice, setTotalPrice] = useState(0)
 
 
   const addItemHandle = () => {
+    console.log("!!")
+    setTotalCount(totalCount+1)
+    calculationTotalPrice()
     // Add Item Event
   }
 
   const calculationTotalPrice = () => {
+    console.log("??")
     // Add Clculation Event
   }  
 
   return (
     <div className="container">
       {itemList.map((item) => (
-        <ItemButton {...item} />
+        <ItemButton onClick={addItemHandle} itemDetail={item} />
       ))}
-      <PaymentSummary totalItem={count} totalPrice={totalPrice} />
+      <PaymentSummary totalItem={totalCount} totalPrice={totalPrice} />
     </div>
   )
 }
