@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { ItemButton, ItemDetail } from './ItemButton'
 import { PaymentSummary } from './PaymentSummary'
-
+import '../styles/VendingMachine.css'
 
 export const VendingMachine = () => {
   const itemList: ItemDetail[] = [
@@ -38,11 +38,15 @@ export const VendingMachine = () => {
   }
 
   return (
-    <div className="container">
-      {itemList.map((item) => (
-        <ItemButton key={item.itemId} onClick={() => addItemHandle(item)} itemdetail={item} orderhistory={orderhistory} />
-      ))}
-      <PaymentSummary orderhistory={orderhistory} />
-    </div>
+    <article className="main">
+      <section>
+        {itemList.map((item) => (
+          <ItemButton key={item.itemId} onClick={() => addItemHandle(item)} itemdetail={item} orderhistory={orderhistory} />
+        ))}
+      </section>
+      <section>
+        <PaymentSummary orderhistory={orderhistory} />
+      </section>
+    </article>
   )
 }

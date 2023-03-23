@@ -1,0 +1,37 @@
+.item_button_container {
+  display: flex;
+}
+
+.item_button {
+  width: 150px;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 8px 16px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 8px 0;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.30) 2px 2px 3px;
+}
+
+.item_count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 10px;
+  height: 15px;
+  width: 15px;;
+  text-align: center;
+  left: -10px;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.30) 2px 2px 3px;
+}
+
+.item_button:active {
+  box-shadow: inset 1px 1px 1.5px  #FBFBFB, inset .3px .4px .8px #878787; 
+  cursor: pointer;
+
+}

@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes, ReactElement } from "react"
+import '../styles/ItemButton.css'
 
 export interface ItemDetail {
   itemId: string
@@ -15,9 +16,9 @@ export const ItemButton  = (props: ItemButtonProps) => {
     (accumulator, currentValue) => accumulator + (props.itemdetail.itemId === currentValue.itemId ? 1 : 0), initialValue)
   
   return (
-    <div>
-      <button  className="item_button" {...props} id={props.itemdetail.itemId}>
-        {props.itemdetail.itemId}, {props.itemdetail.price}
+    <div className="item_button_container">
+      <button  className="item_button" onClick={props.onClick} id={props.itemdetail.itemId}>
+        {props.itemdetail.name}, {props.itemdetail.price}
       </button>
       <div id={props.itemdetail.itemId + "-count"} className="item_count">
           {count}
