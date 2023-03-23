@@ -6,12 +6,13 @@
   width: 150px;
   border: 1px solid;
   border-radius: 8px;
-  padding: 8px 16px;
+  padding: 8px 12px;
   display: inline-block;
   font-size: 16px;
   margin: 8px 0;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.30) 2px 2px 3px;
+  display: flex;
 }
 
 .item_count {
@@ -33,5 +34,8 @@
 .item_button:active {
   box-shadow: inset 1px 1px 1.5px  #FBFBFB, inset .3px .4px .8px #878787; 
   cursor: pointer;
+}
 
+.price {
+  margin-left: auto;
 }

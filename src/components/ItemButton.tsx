@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactElement } from "react"
+import { ButtonHTMLAttributes, ReactElement, useEffect, useState } from "react"
 import '../styles/ItemButton.css'
 
 export interface ItemDetail {
@@ -12,16 +12,22 @@ type ItemButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & { children?: Re
 
 export const ItemButton  = (props: ItemButtonProps) => {
   const initialValue = 0
-  let count  = props.orderhistory.reduce(
-    (accumulator, currentValue) => accumulator + (props.itemdetail.itemId === currentValue.itemId ? 1 : 0), initialValue)
+  const [itemCount, setItemCount] = useState(0)
+  useEffect(() => {
+    let count  = props.orderhistory.reduce(
+      (accumulator, currentValue) => accumulator + (props.itemdetail.itemId === currentValue.itemId ? 1 : 0), initialValue)
+    setItemCount(count)
+  }, [props])
+
   
   return (
     <div className="item_button_container">
       <button  className="item_button" onClick={props.onClick} id={props.itemdetail.itemId}>
-        {props.itemdetail.name}, {props.itemdetail.price}
+        <span>{props.itemdetail.name}</span>
+        <span className="price">{props.itemdetail.price}円</span>
       </button>
       <div id={props.itemdetail.itemId + "-count"} className="item_count">
-          {count}
+          {itemCount}
       </div>
     </div>
   )
